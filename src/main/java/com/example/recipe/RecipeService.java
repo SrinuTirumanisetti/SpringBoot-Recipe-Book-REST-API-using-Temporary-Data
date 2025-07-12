@@ -28,4 +28,10 @@ public class RecipeService implements RecipeRepository {
         // Don't modify the above code
 
         // Write your code here
+        @Override
+        public ArrayList<Recipe> getRecipe(){
+             Collection<Recipe> RecipeList = recipeBook.values();
+             ArrayList<Recipe> Recipes = new ArrayList<>(RecipeList);
+             return Recipes;
+        }
 }
