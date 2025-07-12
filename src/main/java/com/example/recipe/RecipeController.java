@@ -36,7 +36,12 @@ public class RecipeController{
     }
 
     @PutMapping("/recipes/{recipeId}")
-        public Recipe updateRecipe(@PathVariable("recipeId") int recipeId, @RequestBody Recipe recipe){
-            return service.updateRecipe(recipeId, recipe);
-        }
+    public Recipe updateRecipe(@PathVariable("recipeId") int recipeId, @RequestBody Recipe recipe){
+        return service.updateRecipe(recipeId, recipe);
+    }
+
+    @DeleteMapping("/recipes/{recipeId}")
+    public void deleteRecipe(@PathVariable("recipeId") int recipeId){
+        service.deleteRecipe(recipeId);
+    }
 }
