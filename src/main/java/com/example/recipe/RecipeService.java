@@ -55,4 +55,22 @@ public class RecipeService implements RecipeRepository {
             }
             return recipe;
         }
+
+        @Override
+        public Recipe updateRecipe(int recipeId,Recipe recipe){
+            Recipe existingRecipe = recipeBook.get(recipeId);
+            if(existingRecipe==null){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+            if(recipe.getRecipeName()!=null){
+                existingRecipe.setRecipeName(recipe.getRecipeName());
+            }
+            if(recipe.getRecipeType()!=null){
+                existingRecipe.setRecipeType(recipe.getRecipeType());
+            }
+            if(recipe.getIngredients()!=null){
+                existingRecipe.setIngredients(recipe.getIngredients());
+            }
+            return existingRecipe;
+        }
 }
