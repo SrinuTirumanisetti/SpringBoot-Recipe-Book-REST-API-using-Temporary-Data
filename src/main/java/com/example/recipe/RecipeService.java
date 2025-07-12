@@ -28,10 +28,20 @@ public class RecipeService implements RecipeRepository {
         // Don't modify the above code
 
         // Write your code here
+        int uniqueId=6;
+
         @Override
         public ArrayList<Recipe> getRecipe(){
              Collection<Recipe> RecipeList = recipeBook.values();
              ArrayList<Recipe> Recipes = new ArrayList<>(RecipeList);
              return Recipes;
+        }
+
+        @Override
+        public Recipe addRecipe(Recipe recipe){
+             recipe.setRecipeId(uniqueId);
+             recipeBook.put(uniqueId,recipe);
+             uniqueId=uniqueId+1;
+             return recipe;
         }
 }
