@@ -2,6 +2,8 @@ package com.example.recipe;
 
 import com.example.recipe.RecipeRepository;
 import com.example.recipe.Recipe;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.*;
 
@@ -43,5 +45,14 @@ public class RecipeService implements RecipeRepository {
              recipeBook.put(uniqueId,recipe);
              uniqueId=uniqueId+1;
              return recipe;
+        }
+
+        @Override
+        public Recipe getRecipe(int recipeId){
+            Recipe recipe = recipeBook.get(recipeId);
+            if(recipe==null){
+               throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+            return recipe;
         }
 }

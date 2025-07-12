@@ -29,4 +29,9 @@ public class RecipeController{
     public Recipe addRecipe(@RequestBody Recipe recipe){
         return service.addRecipe(recipe);
     }
+
+    @GetMapping("/recipes/{recipeId}")
+    public Recipe getRecipe(@PathVariable("recipeId") int recipeId){
+        return service.getRecipe(recipeId);
+    }
 }
